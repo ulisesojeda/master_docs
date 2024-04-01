@@ -12,6 +12,8 @@
   mkdir logs
   mkdir plugins
   mkdir config
+
+  echo -e "AIRFLOW_UID=$(id -u)" > .env  # si se ejecuta en Linux/MacOS
   ```
 - Abrir carpeta **airflow_docker** con Visual Studio Code
     ```bash
