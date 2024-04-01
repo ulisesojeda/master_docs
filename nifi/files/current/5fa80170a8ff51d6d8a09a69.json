@@ -1,0 +1,13 @@
+  {
+    "_id": "5fa80170a8ff51d6d8a09a69",
+    "index": 1,
+    "guid": "cdf73b31-4fd1-4484-b69f-b006d62d98fe",
+    "isActive": false,
+    "accountType": "current",
+    "balance": "$1,333.53",
+    "name": "Erna Sampson",
+    "company": "MAKINGWAY",
+    "email": "ernasampson@example.com",
+    "phone": "+1 (985) 534-2442",
+    "address": "392 Montague Street, Noblestown, Colorado, 7619"
+  }

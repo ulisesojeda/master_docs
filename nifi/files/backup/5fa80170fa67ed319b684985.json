@@ -1,0 +1,13 @@
+  {
+    "_id": "5fa80170fa67ed319b684985",
+    "index": 0,
+    "guid": "96a2917d-cab7-4ead-a77e-611b3382202c",
+    "isActive": false,
+    "accountType": "savings",
+    "balance": "$3,234.78",
+    "name": "Bridgette Bean",
+    "company": "ACLIMA",
+    "email": "bridgettebean@example.com",
+    "phone": "+1 (917) 555-3418",
+    "address": "136 Moultrie Street, Cornucopia, Kansas, 4294"
+  }

@@ -1,0 +1,13 @@
+  {
+    "_id": "5fa80170bb4d9e4b5bec5594",
+    "index": 3,
+    "guid": "47feb2fc-b293-4662-8ea0-1d1349eebfb9",
+    "isActive": true,
+    "accountType": "savings",
+    "balance": "$1,801.63",
+    "name": "Ann Gordon",
+    "company": "OCEANICA",
+    "email": "anngordon@example.com",
+    "phone": "+1 (966) 533-2898",
+    "address": "363 Monitor Street, Henrietta, Arizona, 1063"
+  }

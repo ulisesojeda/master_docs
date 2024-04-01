@@ -1,0 +1,69 @@
+version: '3'
+
+services:
+  nifi_1:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM apache/nifi:2.0.0-M2
+        RUN curl https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.2/postgresql-42.7.2.jar --output postgresql-42.7.2.jar
+        RUN cp postgresql-42.7.2.jar /opt/nifi/nifi-current/lib/
+    ports:
+      - "8443:8443"
+      - "5555:5555"
+    environment:
+      - SINGLE_USER_CREDENTIALS_USERNAME=admin
+      - SINGLE_USER_CREDENTIALS_PASSWORD=admin123456789
+      - NIFI_WEB_HTTPS_PORT=8443
+    volumes:
+      - .:/data
+
+  nifi_2:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM apache/nifi:2.0.0-M2
+        RUN curl https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.2/postgresql-42.7.2.jar --output postgresql-42.7.2.jar
+        RUN cp postgresql-42.7.2.jar /opt/nifi/nifi-current/lib/
+    ports:
+      - "8444:8444"
+    environment:
+      - SINGLE_USER_CREDENTIALS_USERNAME=admin
+      - SINGLE_USER_CREDENTIALS_PASSWORD=admin123456789
+      - NIFI_WEB_HTTPS_PORT=8444
+    volumes:
+      - .:/data
+
+  registry:
+    image: apache/nifi-registry:2.0.0-M2
+    ports:
+      - "18080:18080"
+
+  db:
+    image: postgres:alpine3.19
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+
+  mongo:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM mongodb/mongodb-community-server:5.0.15-ubuntu2004 
+        RUN echo 'db.createCollection("cuentas")' >> /tmp/m.mongodb
+        RUN echo 'db.createCollection("test")' >> /tmp/m.mongodb
+
+        RUN echo 'python3 /usr/local/bin/docker-entrypoint.py mongod &' >> /tmp/init.sh
+        RUN echo 'sleep 60 && uname -a && mongosh --username admin --password admin /tmp/m.mongodb && while :; do sleep 100000; done' >> /tmp/init.sh
+
+        RUN chmod 777 /tmp/init.sh
+        RUN chmod 777 /tmp/m.mongodb
+
+        ENTRYPOINT ["/bin/bash"]
+        CMD ["/tmp/init.sh"]
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    ports:
+      - "27017:27017"
