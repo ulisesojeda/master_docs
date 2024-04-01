@@ -184,10 +184,10 @@ EOF
 ```
 
 ```python
-df_csv = pd.read_csv('example.csv')
-print(df_csv)
+df = pd.read_csv('example.csv')
+print(df)
 
-df_csv.to_csv('output2.csv', index=False)
+df.to_csv('output2.csv', index=False)
 ```
 
 ### Acceso y manipulación de datos
