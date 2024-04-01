@@ -8,7 +8,10 @@
 - Copiar fichero [docker-compose](https://github.com/ulisesojeda/master_docs/blob/master/airflow_install/docker-compose.yaml) en **docker_installation**
 - Crear carpetas **dags**, **logs**, **plugins** y **config** en **docker_installation**
   ```bash
-  mkdir dags logs plugins config
+  mkdir dags
+  mkdir logs
+  mkdir plugins
+  mkdir config
   ```
 - Abrir carpeta **airflow_docker** con Visual Studio Code
     ```bash
