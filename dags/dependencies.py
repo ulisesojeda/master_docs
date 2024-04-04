@@ -27,7 +27,7 @@ def generate_dag():
         bash_command='ls',
     )
 
-    task_cat, task_uname >> task_echo >> task_ls
+    task_cat >> task_uname >> task_echo >> task_ls
 
     #chain(task_cat, task_uname, task_echo, task_ls)
 
