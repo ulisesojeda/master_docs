@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  nifi_1:
+  nifi:
     build:
       context: .
       dockerfile_inline: |
@@ -15,22 +15,6 @@ services:
       - SINGLE_USER_CREDENTIALS_USERNAME=admin
       - SINGLE_USER_CREDENTIALS_PASSWORD=admin123456789
       - NIFI_WEB_HTTPS_PORT=8443
-    volumes:
-      - .:/data
-
-  nifi_2:
-    build:
-      context: .
-      dockerfile_inline: |
-        FROM apache/nifi:2.0.0-M2
-        RUN curl https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.2/postgresql-42.7.2.jar --output postgresql-42.7.2.jar
-        RUN cp postgresql-42.7.2.jar /opt/nifi/nifi-current/lib/
-    ports:
-      - "8444:8444"
-    environment:
-      - SINGLE_USER_CREDENTIALS_USERNAME=admin
-      - SINGLE_USER_CREDENTIALS_PASSWORD=admin123456789
-      - NIFI_WEB_HTTPS_PORT=8444
     volumes:
       - .:/data
 
