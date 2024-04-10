@@ -34,7 +34,7 @@
 
 8. Ejecutar en una terminal nueva el webserver
   ```bash
-    docker run --net mynet -v ./dags:/opt/airflow/dags airflow_celery airflow webserver
+    docker run -p 8080:8080 --net mynet -v ./dags:/opt/airflow/dags airflow_celery airflow webserver
    ```
 
 9. Ejecutar en una terminal nueva un worker
@@ -49,7 +49,7 @@
 
 11. Ejecutar en una nueva terminal el servicio de flower (monitorizacion)
   ```bash
-    docker run --net mynet airflow_celery celery flower 
+    docker run -p 5555:5555 --net mynet airflow_celery celery flower 
    ```
 
 12. Verificar ambos workers en: http://localhost:5555/
