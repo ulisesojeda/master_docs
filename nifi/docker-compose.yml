@@ -8,6 +8,9 @@ services:
         FROM apache/nifi:2.0.0-M2
         RUN curl https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.2/postgresql-42.7.2.jar --output postgresql-42.7.2.jar
         RUN cp postgresql-42.7.2.jar /opt/nifi/nifi-current/lib/
+
+        RUN curl https://repo1.maven.org/maven2/com/mysql/mysql-connector-j/8.3.0/mysql-connector-j-8.3.0.jar --output mysql-connector-j-8.3.0.jar
+        RUN cp mysql-connector-j-8.3.0.jar /opt/nifi/nifi-current/lib/
     ports:
       - "8443:8443"
       - "5555:5555"
