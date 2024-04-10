@@ -3,7 +3,6 @@ FROM apache/airflow:2.7.1
 ENV AIRFLOW__CORE__EXECUTOR=CeleryExecutor
 ENV AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
 ENV AIRFLOW__SCHEDULER__DAG_DIR_LIST_INTERVAL=30
-ENV AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
 ENV AIRFLOW__CELERY__RESULT_BACKEND=db+postgresql://airflow:airflow@postgres/airflow
 ENV AIRFLOW__CELERY__BROKER_URL=redis://:@redis:6379/0
 ENV AIRFLOW__CORE__FERNET_KEY=''
