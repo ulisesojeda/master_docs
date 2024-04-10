@@ -19,6 +19,8 @@ services:
       retries: 5
       start_period: 5s
     restart: always
+    networks:
+      - mynet
 
   redis:
     image: redis:latest
@@ -33,6 +35,12 @@ services:
       retries: 50
       start_period: 30s
     restart: always
+    networks:
+      - mynet
 
 volumes:
   postgres-db-volume:
+networks:
+  mynet:
+    name: mynet
+    external: true
