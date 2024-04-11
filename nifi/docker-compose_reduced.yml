@@ -1,3 +1,4 @@
+# docker compose -f docker-compose_reduced.yml up
 version: '3'
 
 services:
