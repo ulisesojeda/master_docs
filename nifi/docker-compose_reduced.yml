@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  nifi:
+    image: apache/nifi:2.0.0-M2
+    ports:
+      - "8443:8443"
+      - "5555:5555"
+    environment:
+      - SINGLE_USER_CREDENTIALS_USERNAME=admin
+      - SINGLE_USER_CREDENTIALS_PASSWORD=admin123456789
+      - NIFI_WEB_HTTPS_PORT=8443
+    volumes:
+      - .:/data
+
+  registry:
+    image: apache/nifi-registry:2.0.0-M2
+    ports:
+      - "18080:18080"
