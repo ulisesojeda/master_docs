@@ -25,6 +25,8 @@ services:
     image: apache/nifi-registry:2.0.0-M2
     ports:
       - "18080:18080"
+    volumes:
+      - registry:/opt
 
   db:
     image: postgres:alpine3.19
@@ -67,3 +69,6 @@ services:
     image: apache/kafka:3.7.0
     ports:
       - "9092:9092"
+
+volumes:
+  registry:
