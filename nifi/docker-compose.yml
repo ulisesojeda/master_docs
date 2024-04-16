@@ -20,6 +20,7 @@ services:
       - NIFI_WEB_HTTPS_PORT=8443
     volumes:
       - .:/data
+      - nifi:/opt
 
   registry:
     image: apache/nifi-registry:2.0.0-M2
@@ -96,3 +97,4 @@ services:
 
 volumes:
   registry:
+  nifi:
