@@ -6,6 +6,10 @@ services:
       context: .
       dockerfile_inline: |
         FROM apache/nifi:2.0.0-M2
+        USER root
+        RUN apt update
+        RUN apt install -y postgresql postgresql-contrib
+        USER nifi
         RUN curl https://repo1.maven.org/maven2/org/postgresql/postgresql/42.7.2/postgresql-42.7.2.jar --output postgresql-42.7.2.jar
         RUN cp postgresql-42.7.2.jar /opt/nifi/nifi-current/lib/
 
